@@ -12,6 +12,7 @@
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <!-- Include the jQuery Mobile library -->
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
   <title>PocketPals</title>
 
@@ -26,10 +27,16 @@
     }
     window.onload = hi;
 
-    $("p").on("tap",function() {
-        $("p").hide();
-    }).on("taphold",function() {
-        $(this).hide();
+    $(document).ready(function(){
+        $("#stick").on("tap",function() {
+            $("p").hide();
+        })/*.on("taphold",function() {
+            $(this).hide();
+        });*/
+
+        $("#innerBox").draggable({
+            containment: "parent"
+        });
     });
 
 /*
@@ -43,18 +50,19 @@
     */
             
     // Initialize the draggable
-    $(".stick").each(function(){
-        var $el = $(this);
-        $el.draggable({containment: $el.closest('#stickBounds') });
-    });
+    //$(".stick").each(function(){
+     //   var $el = $(this);
+      //  $el.draggable({containment: $el.closest('#stickBounds') });
+    //});
 
     // Getter or setter after initialization
-    var containment = $(".joystick").draggable("option", "containment");
+    var containment = $("#stick").draggable("option", "containment");
 
     // Setter
-    $(".selector").draggable("option","containment","parent");
+    $("#stick").draggable("option","containment","parent");
 
 
+/*
     // Drawing canvas
     function draw() {
       var canvas = document.getElementById('viewport');
@@ -68,6 +76,7 @@
         ctx.fillRect (30, 30, 55, 50);
       }
     }
+*/
   </script>
   <style type="text/css">
     body {
@@ -120,13 +129,15 @@
   </style>
 </head>
 <div id="displaywindow">
-    <body onload="draw();">
+<!--    <body onload="draw();">
       <canvas id="viewport" width="500" height="300"></canvas>
     </body>
+-->
 </div>
 
 <div id="mobile">
     <div id="verticalPhone">
+        <p style=color: white;{}>alsdkfakl;sdf;hii</p>
     </div>
 
     <div id="controller">

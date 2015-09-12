@@ -21,9 +21,19 @@
         $(this).hide();
     });
 
+    // Centering the joystick
+    function center() {
+        var inner = document.getElementById('innerBox');
+        var outer = document.getElementById('containingBox');
+
+        inner.style.backgroundColor = red;
+        inner.style.marginTop = 50px;// outer.style.width/2 - inner.style.width/2;
+    }
+            
     // Initialize the draggable
-    $(".joystick").draggable({
-        containment: "parent"
+    $(".stick").each(function(){
+        var $el = $(this);
+        $el.draggable({containment: $el.closest('#stickBounds') });
     });
 
     // Getter or setter after initialization
@@ -31,8 +41,8 @@
 
     // Setter
     $(".selector").draggable("option","containment","parent");
-  </script>
-  <script>
+
+    // Drawing canvas
     function draw() {
       var canvas = document.getElementById('viewport');
       if (canvas.getContext) {
@@ -45,6 +55,10 @@
         ctx.fillRect (30, 30, 55, 50);
       }
     }
+
+    $("#stick").click(function() {
+        $("#viewport").hide();
+    });
   </script>
   <style type="text/css">
     body {
@@ -63,9 +77,55 @@
         width: 100%;
         height: 100%;
     }
+    .box {
+        position: relative;
+        width: 30%;
+    }
+    .box:before {
+        content: "";
+        display: block;
+        padding-top: 100%;  /* Ratio of 1:1 */
+    }
+    #innerBox {
+        margin: 0 auto;
+        margin-top: 0px;
+        position: relative;
+        width: 40%;
+    }
+    .circle {
+        position: absolute;
+        border-radius: 50%;
+        border-style: solid;
+        border-color: red;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    #stick {
+        border-radius: 50%;
+        border-style: dashed;
+        border-color: black;
+        background: grey;
+    }
   </style>
 </head>
-<body onload="draw();">
-  <canvas id="viewport" width="500" height="300"></canvas>
-</body>
+<div id="displaywindow">
+    <body onload="draw();">
+      <canvas id="viewport" width="500" height="300"></canvas>
+    </body>
+</div>
+
+<div id="mobile">
+    <div id="verticalPhone">
+    </div>
+
+    <div id="controller">
+        <div class="box" id="containingBox">
+            <div class="circle" id="stickBounds">
+                <div class="box" id="innerBox"><div class="circle" id="stick"></div></div>
+            </div>
+        </div>
+    </div>
+</div>
 </html>

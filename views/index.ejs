@@ -14,6 +14,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
   <!-- Include the jQuery UI library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <!-- Include the jQuery Touch -->
+  <script src="http://s3.amazonaws.com/socketsidekick-assets/jquery.ui.touch-punch.min.js"></script>
 
   <title>PocketPals</title>
 
@@ -40,6 +42,10 @@
         });
     });
 
+    $(window).on("orientationchange", function(event) {
+        $( "#orientation" ).text( "This device is in " + event.orientation + " mode!" );
+    }
+
 /*
     // Centering the joystick
     function center() { var inner = document.getElementById('innerBox');
@@ -60,7 +66,7 @@
     var containment = $("#stick").draggable("option", "containment");
 
     // Setter
-    $("#stick").draggable("option","containment","parent");
+    $("#stick").draggable("option","containment","parent", {rever: 'invalid'});
 
 
 /*

@@ -14,6 +14,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
   <!-- Include the jQuery UI library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <!-- Include interact.js for touch draggability -->
+  <script src="//cdn.jsdelivr.net/interact.js/1.2.5/interact.min.js"></script>
 
   <title>PocketPals</title>
 
@@ -27,6 +29,52 @@
         }
     }
     window.onload = hi;
+
+
+
+    // target elements with the "draggable" class
+    interact('.draggable')
+    .draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        restrict: {
+            restriction: "parent",
+            endOnly: true,
+            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+
+        // call this function on every dragmove event
+        onmove: dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+            var textEl = event.target.querySelector('p');
+
+            textEl && (textEl.textContent =
+                    'moved a distance of '
+                    + (Math.sqrt(event.dx * event.dx +
+                            event.dy * event.dy)|0) + 'px');
+        }
+    });
+
+    function dragMoveListener (event) {
+        var target = event.target,
+        // keep the dragged position in the data-x/data-y attributes
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+        // translate the element
+        target.style.webkitTransform =
+            target.style.transform =
+            'translate(' + x + 'px, ' + y + 'px)';
+
+        // update the posiion attributes
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+    }
+
+    // this is used later in the resizing demo
+    window.dragMoveListener = dragMoveListener;
 
     $(document).ready(function(){
         $("#stick").on("tap",function() {
@@ -83,58 +131,9 @@
     }
 */
   </script>
-  <!-- Include the jQuery Touch -->
-  <script src="https://s3.amazonaws.com/socketsidekick-assets/javascripts/jquery.ui.touch-punch.min.js"></script>
+
+  <link rel="stylesheet" href="/stylesheets/style.css" />
   
-  <style type="text/css">
-    body {
-        background-color: #151515;
-    }
-    canvas { 
-        border: 1px solid black;
-        width: 100%;
-        height: 500px;
-        background-color: white;
-    }
-    #controller {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-    }
-    .box {
-        position: relative;
-        width: 30%;
-    }
-    .box:before {
-        content: "";
-        display: block;
-        padding-top: 100%;  /* Ratio of 1:1 */
-    }
-    #innerBox {
-        margin: 0 auto;
-        margin-top: 0px;
-        position: relative;
-        width: 40%;
-    }
-    .circle {
-        position: absolute;
-        border-radius: 50%;
-        border-style: solid;
-        border-color: red;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
-    #stick {
-        border-radius: 50%;
-        border-style: dashed;
-        border-color: black;
-        background: grey;
-    }
-  </style>
 </head>
 <div id="displaywindow">
 <!--    <body onload="draw();">
@@ -152,6 +151,7 @@
         <div class="box" id="containingBox">
             <div class="circle" id="stickBounds">
                 <div class="box" id="innerBox"><div class="circle" id="stick"></div></div>
+                <div class="draggable" id="rect"></div>
             </div>
         </div>
     </div>

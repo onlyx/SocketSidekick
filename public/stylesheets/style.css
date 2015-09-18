@@ -64,6 +64,8 @@ canvas {
 
 button {
     display: block;
+    background: blue;
+    border: blue;
     -webkit-appearance: none;
 }
 

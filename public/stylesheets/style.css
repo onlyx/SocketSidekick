@@ -62,6 +62,10 @@ canvas {
     padding-top: 100%;
 }
 
+button {
+    display: block;
+}
+
 #up {
     position: relative;
     top: 50%;
@@ -77,9 +81,9 @@ canvas {
     top: 50%;
     -ms-transform: translate(-10%,-50%);
     -webkit-transform: translate(-10%,-50%);
-    -moz-transform: translate(-10%,-50%);
-    -o-transform: translate(-10%,-50%);
-    transform: translate(-10%,-50%);
+    -moz-transform: translate(350%,-150%);
+    -o-transform: translate(250%,-0%);
+    transform: translate(350%,-150%);
 }
 
 #down {

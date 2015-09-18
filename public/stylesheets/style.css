@@ -84,9 +84,9 @@ button {
     top: 50%;
     -ms-transform: translate(-10%,-50%);
     -webkit-transform: translate(-10%,-50%);
-    -moz-transform: translate(350%,-150%);
+    -moz-transform: translate(300%,-150%);
     -o-transform: translate(250%,-0%);
-    transform: translate(350%,-150%);
+    transform: translate(300%,-150%);
 }
 
 #down {
@@ -104,9 +104,9 @@ button {
     top: 50%;
     -ms-transform: translate(-20%,-50%);
     -webkit-transform: translate(-20%,-50%);
-    -moz-transform: translate(-20%,-50%);
+    -moz-transform: translate(100%,-350%);
     -o-transform: translate(-20%,-50%);
-    transform: translate(-20%,-50%);
+    transform: translate(100%,-350%);
 }
 
 #stick {

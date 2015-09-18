@@ -66,24 +66,28 @@ canvas {
     position: relative;
     top: 50%;
     transform: translate(200%, -150%);
+    -webkit-transform:translate(200%,-150%);
 }
 
 #right {
     position: relative;
     top: 50%;
     transform: translate(-10%,-50%);
+    -webkit-transform:translate(-10%,-50%);
 }
 
 #down {
     position: relative;
     top: 50%;
     transform: translate(-15%,50%);
+    -webkit-transform:translate(-15%,50%);
 }
 
 #left {
     position: relative;
     top: 50%;
     transform: translate(-20%,-50%);
+    -webkit-transform:translate(-20%,-50%);
 }
 
 #stick {

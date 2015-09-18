@@ -9,6 +9,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -38,6 +40,13 @@ app.get('/', function(request, response) {
   response.render('views/index');
 });
 
+// Socket.io code
+io.on('connection', function(socket) {
+    socket.on('button press', function(direction) {
+        console.log(direction);
+    });
+});
+
 // error handlers
 
 // development error handler
@@ -63,7 +72,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(app.get('port'), function() {
+http.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 

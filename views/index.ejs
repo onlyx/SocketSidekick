@@ -35,13 +35,20 @@
     // target elements with the "draggable" class
     interact('.draggable')
     .draggable({
+        snap: {
+            targets: [
+            { x: 100, y: 200 },
+            function (x, y) { return { x: x % 20, y: y}; }
+            ],
+            endOnly: true
+        },
         // enable inertial throwing
         inertia: true,
         // keep the element within the area of it's parent
         restrict: {
             restriction: "parent",
-            endOnly: true,
-            elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            endOnly: false,
+            elementRect: { top: .4, left: 0, bottom: .6, right: 1 }
         },
 
         // call this function on every dragmove event
@@ -102,18 +109,6 @@
     }
     */
             
-    // Initialize the draggable
-    //$(".stick").each(function(){
-     //   var $el = $(this);
-      //  $el.draggable({containment: $el.closest('#stickBounds') });
-    //});
-
-    // Getter or setter after initialization
-    var containment = $("#stick").draggable("option", "containment");
-
-    // Setter
-    $("#stick").draggable("option","containment","parent", {rever: 'invalid'});
-
 
 /*
     // Drawing canvas
@@ -135,25 +130,50 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
   
 </head>
-<div id="displaywindow">
-<!--    <body onload="draw();">
-      <canvas id="viewport" width="500" height="300"></canvas>
-    </body>
--->
-</div>
-
-<div id="mobile">
-    <div id="verticalPhone">
-        <p style=color: white;{}>alsdkfakl;sdf;hii</p>
+<body>
+    <div id="displaywindow">
+    <!--    <body onload="draw();">
+          <canvas id="viewport" width="500" height="300"></canvas>
+        </body>
+    -->
     </div>
 
-    <div id="controller">
-        <div class="box" id="containingBox">
-            <div class="circle" id="stickBounds">
-                <div class="box" id="innerBox"><div class="circle" id="stick"></div></div>
-                <div class="draggable" id="rect"></div>
+    <div id="mobile">
+        <div id="verticalPhone">
+            <p style=color: white;{}>alsdkfakl;sdf;hii</p>
+        </div>
+
+        <div id="controller">
+            <div class="box" id="containingBox">
+                <div class="circle" id="stickBounds">
+    <!--                <div class="box" id="innerBox">
+                        <div class="circle" id="stick">
+                        </div>
+                    </div>
+                    <div class="draggable" id="rect"></div>
+    -->
+                    <button class="dpad" id="up">Up</button>
+                    <button class="dpad" id="right">Right</button>
+                    <button class="dpad" id="down">Down</button>
+                    <button class="dpad" id="left">Left</button>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var socket = io();
+        $('form').submit(function(){
+            socket.emit('chat message', $('#m').val());
+            $('#m').val('');
+            return false;
+        });
+        socket.on('chat message', function(msg) {
+            $('#message').append($('<li>').text(msg));
+        });
+    </script>
+</body>
 </html>

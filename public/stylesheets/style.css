@@ -51,6 +51,41 @@ canvas {
     right: 0;
 }
 
+.dpad {
+    position: relative;
+    width: 20%;
+}
+
+.dpad:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+#up {
+    position: relative;
+    top: 50%;
+    transform: translate(200%, -150%);
+}
+
+#right {
+    position: relative;
+    top: 50%;
+    transform: translate(-10%,-50%);
+}
+
+#down {
+    position: relative;
+    top: 50%;
+    transform: translate(-15%,50%);
+}
+
+#left {
+    position: relative;
+    top: 50%;
+    transform: translate(-20%,-50%);
+}
+
 #stick {
     border-radius: 50%;
     border-style: dashed;

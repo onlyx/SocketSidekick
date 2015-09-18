@@ -64,6 +64,7 @@ canvas {
 
 button {
     display: block;
+    -webkit-appearance: none;
 }
 
 #up {

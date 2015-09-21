@@ -42,8 +42,21 @@ app.get('/', function(request, response) {
 
 // Socket.io code
 io.on('connection', function(socket) {
-    socket.on('button press', function(direction) {
-        console.log(direction);
+    socket.on('up', function() {
+        console.log('up');
+        io.emit('up');
+    });
+    socket.on('right', function() {
+        console.log('right');
+        io.emit('right');
+    });
+    socket.on('down', function() {
+        console.log('down');
+        io.emit('down');
+    });
+    socket.on('left', function() {
+        console.log('left');
+        io.emit('left');
     });
 });
 

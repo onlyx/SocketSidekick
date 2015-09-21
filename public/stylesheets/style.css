@@ -85,40 +85,40 @@ button {
     position: relative;
     top: 50%;
     -ms-transform: translate(200%,-150%);
-    -webkit-transform: translate(150%,-50%);
+    -webkit-transform: translate(150%,-150%);
     -moz-transform: translate(150%,10%);
-    -o-transform: translate(200%,-50%);
-    transform: translate(150%,-50%);
+    -o-transform: translate(200%,-150%);
+    transform: translate(150%,-150%);
 }
 
 #right {
     position: relative;
     top: 50%;
     -ms-transform: translate(300%,-150%);
-    -webkit-transform: translate(250%,-50%);
+    -webkit-transform: translate(250%,-150%);
     -moz-transform: translate(250%,-150%);
-    -o-transform: translate(300%,-50%);
-    transform: translate(250%,-50%);
+    -o-transform: translate(300%,-150%);
+    transform: translate(250%,-150%);
 }
 
 #down {
     position: relative;
     top: 50%;
     -ms-transform: translate(200%,-150%);
-    -webkit-transform: translate(150%,-50%);
-    -moz-transform: translate(150%,-50%);
+    -webkit-transform: translate(150%,-150%);
+    -moz-transform: translate(150%,-150%);
     -o-transform: translate(200%,-150%);
-    transform: translate(150%,-50%);
+    transform: translate(150%,-150%);
 }
 
 #left {
     position: relative;
     top: 50%;
     -ms-transform: translate(100%,-350%);
-    -webkit-transform: translate(50%,-247%);
+    -webkit-transform: translate(50%,-350%);
     -moz-transform: translate(50%,-350%);
-    -o-transform: translate(100%,-247%);
-    transform: translate(50%,-247%);
+    -o-transform: translate(100%,-350%);
+    transform: translate(50%,-350%);
 }
 
 #stick {

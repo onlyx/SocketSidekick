@@ -181,16 +181,34 @@
             clearInterval(timer);
         });
         $('#right').bind('touchstart click', function(){
-            socket.emit('right');
+            clearInterval(timer);
+            timer = setInterval(function() {
+                socket.emit('right');
+            }, 100);
             return false;
+        });
+        $('#right').bind("touchend touchcancel", function(e){
+            clearInterval(timer);
         });
         $('#down').bind('touchstart click',function(){
-            socket.emit('down');
+            clearInterval(timer);
+            timer = setInterval(function() {
+                socket.emit('down');
+            }, 100);
             return false;
         });
+        $('#down').bind("touchend touchcancel", function(e){
+            clearInterval(timer);
+        });
         $('#left').bind('touchstart click',function(){
-            socket.emit('left');
+            clearInterval(timer);
+            timer = setInterval(function() {
+                socket.emit('left');
+            }, 100);
             return false;
+        });
+        $('#left').bind("touchend touchcancel", function(e){
+            clearInterval(timer);
         });
 
         socket.on('up', function() {

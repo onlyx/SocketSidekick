@@ -152,6 +152,12 @@
                 <button class="dpad" id="right"></button>
                 <button class="dpad" id="down"></button>
                 <button class="dpad" id="left"></button>
+                <!--
+                <div class="box" id="ab">
+                    <button class="circle" id="a">Grow</button>
+                    <button class="circle" id="b">Shrink</button>
+                </div>
+                -->
       <!--      <div class="box" id="containingBox">
                 <div class="circle" id="stickBounds">
                     <div class="box" id="innerBox">
@@ -177,6 +183,7 @@
         var timer;
         $('#up').bind('touchstart click', function(){
             clearInterval(timer);
+            $(this).css('background', '#b3c2bf');
             timer = setInterval(function() {
                 socket.emit('up');
             }, 100);
@@ -184,9 +191,11 @@
         });
         $('#up').bind("touchend touchcancel", function(e){
             clearInterval(timer);
+            $(this).css('background', '#e3ece5');
         });
         $('#right').bind('touchstart click', function(){
             clearInterval(timer);
+            $(this).css('background', '#b3c2bf');
             timer = setInterval(function() {
                 socket.emit('right');
             }, 100);
@@ -194,9 +203,11 @@
         });
         $('#right').bind("touchend touchcancel", function(e){
             clearInterval(timer);
+            $(this).css('background', '#e3ece5');
         });
         $('#down').bind('touchstart click',function(){
             clearInterval(timer);
+            $(this).css('background', '#b3c2bf');
             timer = setInterval(function() {
                 socket.emit('down');
             }, 100);
@@ -204,9 +215,11 @@
         });
         $('#down').bind("touchend touchcancel", function(e){
             clearInterval(timer);
+            $(this).css('background', '#e3ece5');
         });
         $('#left').bind('touchstart click',function(){
             clearInterval(timer);
+            $(this).css('background', '#b3c2bf');
             timer = setInterval(function() {
                 socket.emit('left');
             }, 100);
@@ -214,6 +227,7 @@
         });
         $('#left').bind("touchend touchcancel", function(e){
             clearInterval(timer);
+            $(this).css('background', '#e3ece5');
         });
 
         socket.on('up', function() {

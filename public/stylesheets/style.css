@@ -94,9 +94,9 @@ button {
     top: 50%;
     -ms-transform: translate(-15%,50%);
     -webkit-transform: translate(-15%,50%);
-    -moz-transform: translate(-15%,50%);
+    -moz-transform: translate(200%,-150%);
     -o-transform: translate(-15%,50%);
-    transform: translate(-15%,50%);
+    transform: translate(200%,-150%);
 }
 
 #left {

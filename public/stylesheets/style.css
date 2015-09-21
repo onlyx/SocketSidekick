@@ -59,7 +59,7 @@ canvas {
 .dpad:before {
     content: "";
     display: block;
-    padding-top: 120%;
+    padding-top: 200%;
 }
 
 button {
@@ -73,40 +73,40 @@ button {
     position: relative;
     top: 50%;
     -ms-transform: translate(200%,-150%);
-    -webkit-transform: translate(400%,0%);
-    -moz-transform: translate(400%,0%);
+    -webkit-transform: translate(600%,0%);
+    -moz-transform: translate(600%,0%);
     -o-transform: translate(200%,-150%);
-    transform: translate(400%,0%);
+    transform: translate(600%,0%);
 }
 
 #right {
     position: relative;
     top: 50%;
     -ms-transform: translate(300%,-150%);
-    -webkit-transform: translate(500%,0%);
+    -webkit-transform: translate(700%,0%);
     -moz-transform: translate(300%,-150%);
-    -o-transform: translate(500%,0%);
-    transform: translate(500%,0%);
+    -o-transform: translate(700%,0%);
+    transform: translate(700%,0%);
 }
 
 #down {
     position: relative;
     top: 50%;
     -ms-transform: translate(200%,-150%);
-    -webkit-transform: translate(400%,0%);
-    -moz-transform: translate(400%,0%);
+    -webkit-transform: translate(600%,0%);
+    -moz-transform: translate(600%,0%);
     -o-transform: translate(200%,-150%);
-    transform: translate(400%,0%);
+    transform: translate(600%,0%);
 }
 
 #left {
     position: relative;
     top: 50%;
     -ms-transform: translate(100%,-350%);
-    -webkit-transform: translate(300%,-212%);
+    -webkit-transform: translate(500%,-212%);
     -moz-transform: translate(100%,-350%);
-    -o-transform: translate(300%,-212%);
-    transform: translate(300%,-212%);
+    -o-transform: translate(500%,-212%);
+    transform: translate(500%,-212%);
 }
 
 #stick {

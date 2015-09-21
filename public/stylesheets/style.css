@@ -58,7 +58,7 @@ canvas {
 
 .dpad:before {
     content: "";
-    display: inline-block;
+    display: block;
     padding-top: 100%;
 }
 
@@ -73,10 +73,10 @@ button {
     position: relative;
     top: 50%;
     -ms-transform: translate(200%,-150%);
-    -webkit-transform: translate(200%,-150%);
-    -moz-transform: translate(200%,-150%);
+    -webkit-transform: translate(200%,0%);
+    -moz-transform: translate(200%,0%);
     -o-transform: translate(200%,-150%);
-    transform: translate(200%,-150%);
+    transform: translate(200%,0%);
 }
 
 #right {

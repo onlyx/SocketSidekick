@@ -40,6 +40,10 @@ app.get('/', function(request, response) {
   response.render('views/index');
 });
 
+app.get('/controller', function(request, response) {
+  response.render('views/controller');
+});
+
 // Socket.io code
 io.on('connection', function(socket) {
     socket.on('up', function() {

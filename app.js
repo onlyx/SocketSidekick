@@ -41,7 +41,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/controller', function(request, response) {
-  response.render('views/controller');
+  response.render('views/index');
 });
 
 // Socket.io code

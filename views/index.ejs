@@ -169,10 +169,17 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         var socket = io();
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            socket.emit('up');
+            return false;
+        });
+/*
         $('#up').click(function(){
             socket.emit('up');
             return false;
         });
+        */
         $('#right').click(function(){
             socket.emit('right');
             return false;

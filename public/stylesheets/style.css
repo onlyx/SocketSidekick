@@ -58,7 +58,7 @@ canvas {
 
 .dpad:before {
     content: "";
-    display: block;
+    display: inline-block;
     padding-top: 100%;
 }
 
@@ -82,30 +82,30 @@ button {
 #right {
     position: relative;
     top: 50%;
-    -ms-transform: translate(-10%,-50%);
-    -webkit-transform: translate(-10%,-50%);
+    -ms-transform: translate(300%,-150%);
+    -webkit-transform: translate(300%,-150%);
     -moz-transform: translate(300%,-150%);
-    -o-transform: translate(250%,-0%);
+    -o-transform: translate(300%,-150%);
     transform: translate(300%,-150%);
 }
 
 #down {
     position: relative;
     top: 50%;
-    -ms-transform: translate(-15%,50%);
-    -webkit-transform: translate(-15%,50%);
+    -ms-transform: translate(200%,-150%);
+    -webkit-transform: translate(200%,-150%);
     -moz-transform: translate(200%,-150%);
-    -o-transform: translate(-15%,50%);
+    -o-transform: translate(200%,-150%);
     transform: translate(200%,-150%);
 }
 
 #left {
     position: relative;
     top: 50%;
-    -ms-transform: translate(-20%,-50%);
-    -webkit-transform: translate(-20%,-50%);
+    -ms-transform: translate(100%,-350%);
+    -webkit-transform: translate(100%,-350%);
     -moz-transform: translate(100%,-350%);
-    -o-transform: translate(-20%,-50%);
+    -o-transform: translate(100%,-350%);
     transform: translate(100%,-350%);
 }
 

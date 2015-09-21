@@ -103,10 +103,10 @@ button {
     position: relative;
     top: 50%;
     -ms-transform: translate(100%,-350%);
-    -webkit-transform: translate(100%,-197%);
+    -webkit-transform: translate(100%,-210%);
     -moz-transform: translate(100%,-350%);
-    -o-transform: translate(100%,-197%);
-    transform: translate(100%,-197%);
+    -o-transform: translate(100%,-210%);
+    transform: translate(100%,-210%);
 }
 
 #stick {

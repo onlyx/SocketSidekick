@@ -30,6 +30,10 @@
     window.onload = hi;
 
 
+    document.body.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+    });
+
 
     // target elements with the "draggable" class
     interact('.draggable')

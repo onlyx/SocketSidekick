@@ -147,20 +147,20 @@
         </div>
 
         <div id="controller">
-            <div class="box" id="containingBox">
+            <div id="controller_backing">
+                <button class="dpad" id="up"></button>
+                <button class="dpad" id="right"></button>
+                <button class="dpad" id="down"></button>
+                <button class="dpad" id="left"></button>
+      <!--      <div class="box" id="containingBox">
                 <div class="circle" id="stickBounds">
-    <!--                <div class="box" id="innerBox">
+                    <div class="box" id="innerBox">
                         <div class="circle" id="stick">
                         </div>
                     </div>
                     <div class="draggable" id="rect"></div>
-    -->
-                    <button class="dpad" id="up"></button>
-                    <button class="dpad" id="right"></button>
-                    <button class="dpad" id="down"></button>
-                    <button class="dpad" id="left"></button>
-                    </button>
-                </div>
+                </div> 
+                </div>-->
             </div>
         </div>
     </div>
@@ -169,26 +169,19 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         var socket = io();
-        /*
-        document.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            socket.emit('up');
-            return false;
-        });
-        */
         $('#up').bind('touchstart click', function(){
             socket.emit('up');
             return false;
         });
-        $('#right').click(function(){
+        $('#right').bind('touchstart click', function(){
             socket.emit('right');
             return false;
         });
-        $('#down').click(function(){
+        $('#down').bind('touchstart click',function(){
             socket.emit('down');
             return false;
         });
-        $('#left').click(function(){
+        $('#left').bind('touchstart click',function(){
             socket.emit('left');
             return false;
         });

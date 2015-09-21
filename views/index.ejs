@@ -169,9 +169,16 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
         var socket = io();
+        var timer;
         $('#up').bind('touchstart click', function(){
-            socket.emit('up');
+            clearInterval(timer);
+            timer = setInterval(function() {
+                socket.emit('up');
+            }, 100);
             return false;
+        });
+        $('#up').bind("touchend touchcancel", function(e){
+            clearInterval(timer);
         });
         $('#right').bind('touchstart click', function(){
             socket.emit('right');

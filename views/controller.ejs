@@ -7,22 +7,49 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- CSS for the controller and orientation change page -->
   <link rel="stylesheet" href="/stylesheets/controller.css" />
+  <!-- Socket.io -->
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
   
   <title>PocketPals</title>
 
   <script>
-    function detectOrientation() {
+    $(document).ready(function() {
         if (window.innerHeight > window.innerWidth) {
             // replace controller div with the verticalPhone div  
             $("horizontalPhone").hide();
         }
-    }
-    window.onload = detectOrientation;
+    });
 
     $(window).on("orientationchange", function(event) {
         if (event.orientation == "landscape")
             $("horizontalPhone").show();
+    });
+  </script>
+<!--
+  <script>
+  /*
+    function detectOrientation() {
+        if (window.innerHeight > window.innerWidth) {
+            // replace controller div with the verticalPhone div  
+        }
+        alert("hi");
     }
+    window.onload = detectOrientation;
+    */
+
+    $(document).ready(function() {
+        if (window.innerHeight > window.innerWidth) {
+            // replace controller div with the verticalPhone div  
+        }
+        alert("hi");
+    });
+
+  /*
+    $(window).on("orientationchange", function(event) {
+        if (event.orientation == "landscape")
+            $("horizontalPhone").show();
+    });
+    */
 
     /*
     document.body.addEventListener('touchmove', function(event) {
@@ -111,6 +138,7 @@
     */
             
   </script>
+  -->
 </head>
 
 <body>
@@ -145,77 +173,8 @@
       </div>
   </div>
 
-  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-  <script>
-    var socket = io();
-    $('#controller_backing').bind('touchstart click', function(e) {
-       e.preventDefault();
-        return false;
-    });
+  <!-- Dpad input scripts -->
+  <script src="/javascripts/controller.js"></script>
 
-    var timer;
-    $('#up').bind('touchstart click', function(){
-        clearInterval(timer);
-        $(this).css('background', '#b3c2bf');
-        timer = setInterval(function() {
-            socket.emit('up');
-        }, 20);
-        return false;
-    });
-    $('#up').bind("touchend touchcancel", function(e){
-        clearInterval(timer);
-        $(this).css('background', '#e3ece5');
-    });
-    $('#right').bind('touchstart click', function(){
-        clearInterval(timer);
-        $(this).css('background', '#b3c2bf');
-        timer = setInterval(function() {
-            socket.emit('right');
-        }, 100);
-        return false;
-    });
-    $('#right').bind("touchend touchcancel", function(e){
-        clearInterval(timer);
-        $(this).css('background', '#e3ece5');
-    });
-    $('#down').bind('touchstart click',function(){
-        clearInterval(timer);
-        $(this).css('background', '#b3c2bf');
-        timer = setInterval(function() {
-            socket.emit('down');
-        }, 100);
-        return false;
-    });
-    $('#down').bind("touchend touchcancel", function(e){
-        clearInterval(timer);
-        $(this).css('background', '#e3ece5');
-    });
-    $('#left').bind('touchstart click',function(){
-        clearInterval(timer);
-        $(this).css('background', '#b3c2bf');
-        timer = setInterval(function() {
-            socket.emit('left');
-        }, 100);
-        return false;
-    });
-    $('#left').bind("touchend touchcancel", function(e){
-        clearInterval(timer);
-        $(this).css('background', '#e3ece5');
-    });
-
-    socket.on('up', function() {
-        $('#verticalPhone').append($('<li>').text("up pressed"));
-    });
-    socket.on('right', function() {
-        $('#verticalPhone').append($('<li>').text("right pressed"));
-    });
-    socket.on('down', function() {
-        $('#verticalPhone').append($('<li>').text("down pressed"));
-    });
-    socket.on('left', function() {
-        $('#verticalPhone').append($('<li>').text("left pressed"));
-    });
-  </script>
 </body>
 </html>

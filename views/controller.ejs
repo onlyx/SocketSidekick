@@ -12,51 +12,8 @@
   
   <title>PocketPals</title>
 
-  <script>
-    $(document).ready(function() {
-        if (window.innerHeight > window.innerWidth) {
-            // replace controller div with the verticalPhone div  
-            $("horizontalPhone").hide();
-        }
-    });
-
-    $(window).on("orientationchange", function(event) {
-        if (event.orientation == "landscape")
-            $("horizontalPhone").show();
-    });
-  </script>
 <!--
   <script>
-  /*
-    function detectOrientation() {
-        if (window.innerHeight > window.innerWidth) {
-            // replace controller div with the verticalPhone div  
-        }
-        alert("hi");
-    }
-    window.onload = detectOrientation;
-    */
-
-    $(document).ready(function() {
-        if (window.innerHeight > window.innerWidth) {
-            // replace controller div with the verticalPhone div  
-        }
-        alert("hi");
-    });
-
-  /*
-    $(window).on("orientationchange", function(event) {
-        if (event.orientation == "landscape")
-            $("horizontalPhone").show();
-    });
-    */
-
-    /*
-    document.body.addEventListener('touchmove', function(event) {
-        event.preventDefault();
-    });
-    */
-
     /*
     // target elements with the "draggable" class
     interact('.draggable')

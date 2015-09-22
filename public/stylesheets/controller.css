@@ -4,150 +4,152 @@ html, body {
     margin: 0;
 }
 
-#horizontalPhone {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
+@media all and (orientation:landscape) {
+    #horizontalPhone {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
 
-#controller {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-}
+    #controller {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-.box {
-    position: relative;
-    width: 30%;
-}
+    .box {
+        position: relative;
+        width: 30%;
+    }
 
-.box:before {
-    content: "";
-    display: block;
-    padding-top: 100%;  /* Ratio of 1:1 */
-}
+    .box:before {
+        content: "";
+        display: block;
+        padding-top: 100%;  /* Ratio of 1:1 */
+    }
 
-#innerBox {
-    margin: 0 auto;
-    margin-top: 0px;
-    position: relative;
-    width: 40%;
-}
+    #innerBox {
+        margin: 0 auto;
+        margin-top: 0px;
+        position: relative;
+        width: 40%;
+    }
 
-.circle {
-    position: absolute;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: red;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
+    .circle {
+        position: absolute;
+        border-radius: 50%;
+        border-style: solid;
+        border-color: red;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
 
-#controller_backing {
-    width: 100%;
-    height: 100%;
-    background: #3b3a36;
-}
+    #controller_backing {
+        width: 100%;
+        height: 100%;
+        background: #3b3a36;
+    }
 
-.dpad {
-    position: relative;
-    width: 15%;
-}
+    .dpad {
+        position: relative;
+        width: 15%;
+    }
 
-.dpad:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
-}
+    .dpad:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
 
-button {
-    display: block;
-    background: #e3ece5;
-    border: blue;
-    -webkit-appearance: none;
-}
+    button {
+        display: block;
+        background: #e3ece5;
+        border: blue;
+        -webkit-appearance: none;
+    }
 
-#up {
-    position: relative;
-    top: 50%;
-    -ms-transform: translate(200%,-150%);
-    -webkit-transform: translate(150%,-150%);
-    -moz-transform: translate(150%,10%);
-    -o-transform: translate(200%,-150%);
-    transform: translate(150%,-150%);
-}
+    #up {
+        position: relative;
+        top: 50%;
+        -ms-transform: translate(200%,-150%);
+        -webkit-transform: translate(150%,-150%);
+        -moz-transform: translate(150%,10%);
+        -o-transform: translate(200%,-150%);
+        transform: translate(150%,-150%);
+    }
 
-#right {
-    position: relative;
-    top: 50%;
-    -ms-transform: translate(300%,-150%);
-    -webkit-transform: translate(250%,-150%);
-    -moz-transform: translate(250%,-150%);
-    -o-transform: translate(300%,-150%);
-    transform: translate(250%,-150%);
-}
+    #right {
+        position: relative;
+        top: 50%;
+        -ms-transform: translate(300%,-150%);
+        -webkit-transform: translate(250%,-150%);
+        -moz-transform: translate(250%,-150%);
+        -o-transform: translate(300%,-150%);
+        transform: translate(250%,-150%);
+    }
 
-#down {
-    position: relative;
-    top: 50%;
-    -ms-transform: translate(200%,-150%);
-    -webkit-transform: translate(150%,-150%);
-    -moz-transform: translate(150%,-150%);
-    -o-transform: translate(200%,-150%);
-    transform: translate(150%,-150%);
-}
+    #down {
+        position: relative;
+        top: 50%;
+        -ms-transform: translate(200%,-150%);
+        -webkit-transform: translate(150%,-150%);
+        -moz-transform: translate(150%,-150%);
+        -o-transform: translate(200%,-150%);
+        transform: translate(150%,-150%);
+    }
 
-#left {
-    position: relative;
-    top: 50%;
-    -ms-transform: translate(100%,-350%);
-    -webkit-transform: translate(50%,-355%);
-    -moz-transform: translate(50%,-355%);
-    -o-transform: translate(100%,-350%);
-    transform: translate(50%,-355%);
-}
+    #left {
+        position: relative;
+        top: 50%;
+        -ms-transform: translate(100%,-350%);
+        -webkit-transform: translate(50%,-355%);
+        -moz-transform: translate(50%,-355%);
+        -o-transform: translate(100%,-350%);
+        transform: translate(50%,-355%);
+    }
 
-#ab {
-    width: 12%;
-    background: #c0dfd9;
-}
+    #ab {
+        width: 12%;
+        background: #c0dfd9;
+    }
 
-#a {
-    position: relative;
-    text-align: center;
-    line-height: 100%;
-    -ms-transform: translate(300%,-150%);
-    -webkit-transform: translate(500%,-150%);
-    -moz-transform: translate(250%,-150%);
-    -o-transform: translate(500%,-150%);
-    transform: translate(500%,-150%);
-}
+    #a {
+        position: relative;
+        text-align: center;
+        line-height: 100%;
+        -ms-transform: translate(300%,-150%);
+        -webkit-transform: translate(500%,-150%);
+        -moz-transform: translate(250%,-150%);
+        -o-transform: translate(500%,-150%);
+        transform: translate(500%,-150%);
+    }
 
-#b {
-    position: relative;
-    text-align: center;
-    line-height: 100%;
-    -ms-transform: translate(300%,-150%);
-    -webkit-transform: translate(400%,-100%);
-    -moz-transform: translate(250%,-150%);
-    -o-transform: translate(400%,-100%);
-    transform: translate(400%,-100%);
-}
+    #b {
+        position: relative;
+        text-align: center;
+        line-height: 100%;
+        -ms-transform: translate(300%,-150%);
+        -webkit-transform: translate(400%,-100%);
+        -moz-transform: translate(250%,-150%);
+        -o-transform: translate(400%,-100%);
+        transform: translate(400%,-100%);
+    }
 
-#stick {
-    border-radius: 50%;
-    border-style: dashed;
-    border-color: black;
-    background: grey;
-}
+    #stick {
+        border-radius: 50%;
+        border-style: dashed;
+        border-color: black;
+        background: grey;
+    }
 
-#rect {
-    background: green;
-    border-radius: 5px;
-    height: 50px;
-    width: 50px;
+    #rect {
+        background: green;
+        border-radius: 5px;
+        height: 50px;
+        width: 50px;
+    }
 }

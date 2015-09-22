@@ -13,20 +13,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>-->
   <!-- Include the jQuery UI library 
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
+
   <!-- Include interact.js for touch draggability -->
   <script src="//cdn.jsdelivr.net/interact.js/1.2.5/interact.min.js"></script>
 
   <title>PocketPals</title>
 
   <script>
-    function hi() {
+    function detectMobile() {
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-          if (window.innerHeight > window.innerWidth) {
-              document.location.replace("http://socketsidekick.herokuapp.com/controller");
-          }
+            document.location.replace("http://socketsidekick.herokuapp.com/controller");
         }
     }
-    window.onload = hi;
+    window.onload = detectMobile;
 
 
     document.body.addEventListener('touchmove', function(event) {
@@ -129,7 +128,7 @@
 */
   </script>
 
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/viewport.css" />
   
 </head>
 <body>
@@ -138,36 +137,11 @@
           <canvas id="viewport" width="500" height="300"></canvas>
         </body>
     -->
-    </div>
-
-    <div id="mobile">
-        <div id="verticalPhone">
-        </div>
-
-        <div id="controller">
-            <div id="controller_backing">
-                <button class="dpad" id="up"></button>
-                <button class="dpad" id="right"></button>
-                <button class="dpad" id="down"></button>
-                <button class="dpad" id="left"></button>
-                <!--
-                <div class="box" id="ab">
-                    <button class="circle" id="a">Grow</button>
-                    <button class="circle" id="b">Shrink</button>
-                </div>
-                -->
-      <!--      <div class="box" id="containingBox">
-                <div class="circle" id="stickBounds">
-                    <div class="box" id="innerBox">
-                        <div class="circle" id="stick">
-                        </div>
-                    </div>
-                    <div class="draggable" id="rect"></div>
-                </div> 
-                </div>-->
-            </div>
+        <div class="box" id="circle1">
+            <div class="circle"></div>
         </div>
     </div>
+
 
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>

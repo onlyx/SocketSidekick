@@ -14,16 +14,15 @@
     function detectOrientation() {
         if (window.innerHeight > window.innerWidth) {
             // replace controller div with the verticalPhone div  
-            alert("hi");
+            $("horizontalPhone").hide();
         }
-        document.getElementById("controller_backing").setAttribute("style", "background: red;");
     }
     window.onload = detectOrientation;
 
-/*
     $(window).on("orientationchange", function(event) {
+        if (event.orientation == "landscape")
+            $("horizontalPhone").show();
     }
-    */
 
     /*
     document.body.addEventListener('touchmove', function(event) {

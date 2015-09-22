@@ -4,6 +4,12 @@ html, body {
     margin: 0;
 }
 
+#horizontalPhone {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 #controller {
     position: absolute;
     top: 0;

@@ -5,102 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <!-- Include the jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- CSS for the controller and orientation change page -->
-  <link rel="stylesheet" href="/stylesheets/controller.css" />
   <!-- Socket.io -->
   <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <!-- CSS for the controller and orientation change page -->
+  <link rel="stylesheet" href="/stylesheets/controller.css" />
   
   <title>PocketPals</title>
 
-<!--
-  <script>
-    /*
-    // target elements with the "draggable" class
-    interact('.draggable')
-    .draggable({
-        snap: {
-            targets: [
-            { x: 100, y: 200 },
-            function (x, y) { return { x: x % 20, y: y}; }
-            ],
-            endOnly: true
-        },
-        // enable inertial throwing
-        inertia: true,
-        // keep the element within the area of it's parent
-        restrict: {
-            restriction: "parent",
-            endOnly: false,
-            elementRect: { top: .4, left: 0, bottom: .6, right: 1 }
-        },
-
-        // call this function on every dragmove event
-        onmove: dragMoveListener,
-        // call this function on every dragend event
-        onend: function (event) {
-            var textEl = event.target.querySelector('p');
-
-            textEl && (textEl.textContent =
-                    'moved a distance of '
-                    + (Math.sqrt(event.dx * event.dx +
-                            event.dy * event.dy)|0) + 'px');
-        }
-    });
-
-    function dragMoveListener (event) {
-        var target = event.target,
-        // keep the dragged position in the data-x/data-y attributes
-        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-        // translate the element
-        target.style.webkitTransform =
-            target.style.transform =
-            'translate(' + x + 'px, ' + y + 'px)';
-
-        // update the posiion attributes
-        target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
-    }
-
-    // this is used later in the resizing demo
-    window.dragMoveListener = dragMoveListener;
-
-    $(document).ready(function(){
-        $("#stick").on("tap",function() {
-            $("p").hide();
-        })/*.on("taphold",function() {
-            $(this).hide();
-        });*/
-
-        $("#innerBox").draggable({
-            containment: "parent"
-        });
-    });
-
-    */
-
-    /*
-    $(window).on("orientationchange", function(event) {
-        $( "#stick" ).text( "This device is in " + event.orientation + " mode!" );
-    }
-
-    // Centering the joystick
-    function center() { var inner = document.getElementById('innerBox');
-        var outer = document.getElementById('containingBox');
-
-        inner.style.backgroundColor = red;
-        inner.style.marginTop = 50px;// outer.style.width/2 - inner.style.width/2;
-    }
-    */
-            
-  </script>
-  -->
 </head>
 
 <body>
   <div id="verticalPhone">
-    <h2>Please put your device into landscape orientation</h2>
+    <img src="/images/rot.png" >
+    <h3>Please put your device into landscape orientation</h3>
   </div>
 
   <div id="horizontalPhone">

@@ -2,6 +2,21 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+    background: #1C1C1C;
+}
+
+h3 {
+    text-align: center;
+    font-family: Tahoma, Geneva, sans-serif;
+    position: absolute;
+    top: 65%;
+}
+
+img {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    width: 30%;
 }
 
 @media all and (orientation:landscape) {

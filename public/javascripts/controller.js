@@ -1,16 +1,19 @@
 $(function() {
+    // Orientation detection
     $(document).ready(function() {
         if (window.innerHeight > window.innerWidth) {
             // replace controller div with the verticalPhone div  
-            $("horizontalPhone").hide();
+            $("#horizontalPhone").hide();
         }
-        alert("hi");
     });
 
     $(window).on("orientationchange", function(event) {
         if (event.orientation == "landscape")
-            $("horizontalPhone").show();
+            $("#horizontalPhone").show();
     });
+
+
+    // Dpad scripts
     var socket = io();
     $('#controller_backing').bind('touchstart click', function(e) {
        e.preventDefault();
@@ -23,7 +26,7 @@ $(function() {
         $(this).css('background', '#b3c2bf');
         timer = setInterval(function() {
             socket.emit('up');
-        }, 20);
+        }, 50);
         return false;
     });
     $('#up').bind("touchend touchcancel", function(e){
@@ -35,7 +38,7 @@ $(function() {
         $(this).css('background', '#b3c2bf');
         timer = setInterval(function() {
             socket.emit('right');
-        }, 20);
+        }, 50);
         return false;
     });
     $('#right').bind("touchend touchcancel", function(e){
@@ -47,7 +50,7 @@ $(function() {
         $(this).css('background', '#b3c2bf');
         timer = setInterval(function() {
             socket.emit('down');
-        }, 20);
+        }, 50);
         return false;
     });
     $('#down').bind("touchend touchcancel", function(e){
@@ -59,7 +62,7 @@ $(function() {
         $(this).css('background', '#b3c2bf');
         timer = setInterval(function() {
             socket.emit('left');
-        }, 20);
+        }, 50);
         return false;
     });
     $('#left').bind("touchend touchcancel", function(e){

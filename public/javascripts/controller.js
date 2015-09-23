@@ -8,7 +8,7 @@ $(function() {
     });
 
     $(window).on("orientationchange", function(event) {
-        if (event.orientation == "landscape")
+        if (event.orientation == "portrait")
             $("#horizontalPhone").show();
     });
 

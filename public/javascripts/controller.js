@@ -11,10 +11,12 @@ $(function() {
         // Portrait
         if (event.orientation == 0) {
             $("#horizontalPhone").hide();
+            $("#verticalPhone").show();
         }
         // Landscape
         else {
-            $(#"horizontalPhone").show();
+            $("#horizontalPhone").show();
+            $("#verticalPhone").hide();
         }
     });
 

@@ -7,9 +7,15 @@ $(function() {
         }
     });
 
-    $(window).on("orientationchange", function(event) {
-        if (event.orientation == "portrait")
-            $("#horizontalPhone").show();
+    $(window).on("orientationchange",function(event) {
+        // Portrait
+        if (event.orientation == 0) {
+            $("#horizontalPhone").hide();
+        }
+        // Landscape
+        else {
+            $(#"horizontalPhone").show();
+        }
     });
 
 

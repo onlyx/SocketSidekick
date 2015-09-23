@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
-    background: #585858;
+    background: #3b3a36;
 }
 
 @media all and (orientation:portrait) {

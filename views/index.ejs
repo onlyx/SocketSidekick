@@ -13,14 +13,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>-->
   <!-- Include the jQuery UI library 
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
-
   <!-- Include interact.js for touch draggability -->
   <script src="//cdn.jsdelivr.net/interact.js/1.2.5/interact.min.js"></script>
+  <!-- Socket.io -->
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 
   <title>PocketPals</title>
 
   <script>
     var socket = io();
+
     function detectMobile() {
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             document.location.replace("http://socketsidekick.herokuapp.com/controller");
@@ -28,34 +30,42 @@
     }
     window.onload = detectMobile;
 
-    socket.on('up', function() {
-        $('#displaywindow').append($('<li>').text("up pressed"));
-    });
-    socket.on('right', function() {
-        $('#displaywindow').append($('<li>').text("right pressed"));
-    });
-    socket.on('down', function() {
-        $('#displaywindow').append($('<li>').text("down pressed"));
-    });
-    socket.on('left', function() {
-        $('#displaywindow').append($('<li>').text("left pressed"));
-    });
-
-/*
-    // Drawing canvas
-    function draw() {
-      var canvas = document.getElementById('viewport');
-      if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-
-        ctx.fillStyle= "rgb(200,0,0)";
-        ctx.fillRect (10,10,55,50);
-
-        ctx.fillStyle = "rgba(0,0,200,0.5)";
-        ctx.fillRect (30, 30, 55, 50);
-      }
-    }
+    $(document).ready(function() {
+        /*
+        $("#test").click(function(){
+            socket.emit('up');
+            console.log("up pressed");
+        });
 */
+        socket.on('up', function() {
+            $('#displaywindow').append($('<li>').text("up pressed"));
+            console.log("up emitted from server");
+        });
+        socket.on('right', function() {
+            $('#displaywindow').append($('<li>').text("right pressed"));
+        });
+        socket.on('down', function() {
+            $('#displaywindow').append($('<li>').text("down pressed"));
+        });
+        socket.on('left', function() {
+            $('#displaywindow').append($('<li>').text("left pressed"));
+        });
+    /*
+        // Drawing canvas
+        function draw() {
+          var canvas = document.getElementById('viewport');
+          if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle= "rgb(200,0,0)";
+            ctx.fillRect (10,10,55,50);
+
+            ctx.fillStyle = "rgba(0,0,200,0.5)";
+            ctx.fillRect (30, 30, 55, 50);
+          }
+        }
+    */
+    });
   </script>
 
   <link rel="stylesheet" href="/stylesheets/viewport.css" />
@@ -65,8 +75,8 @@
     <!--    <body onload="draw();">
           <canvas id="viewport" width="500" height="300"></canvas>
         </body>
+        <button id="test">test</button>
     -->
-        <li>hi</li>
         <div class="box" id="circle1">
             <div class="circle"></div>
         </div>

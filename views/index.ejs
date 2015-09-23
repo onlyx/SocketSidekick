@@ -20,6 +20,7 @@
   <title>PocketPals</title>
 
   <script>
+    var socket = io();
     function detectMobile() {
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             document.location.replace("http://socketsidekick.herokuapp.com/controller");

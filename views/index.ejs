@@ -20,6 +20,16 @@
 
   <title>PocketPals</title>
 
+  <link rel="stylesheet" href="/stylesheets/viewport.css" />
+  </head>
+<body>
+    <canvas id="canvas"></canvas>
+<!--    <body onload="draw();">
+    <div class="box" id="circle1">
+        <div class="circle"></div>
+    </div>
+-->
+
   <script>
     var socket = io();
 
@@ -30,56 +40,145 @@
     }
     window.onload = detectMobile;
 
-    $(document).ready(function() {
-        /*
-        $("#test").click(function(){
-            socket.emit('up');
-            console.log("up pressed");
+    // Drawing canvas
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var clients = []; // Clients are used to deal with each socket connection
+    var players=[]; // Player objects
+
+    socket.on('connect', function(client) {
+        clients.push(client);
+        initializePlayer();
+        var arrayIndex = clients.indexOf(client);
+
+        client.on('up', function() {
+            movePlayers(0, arrayIndex);
         });
-*/
+        client.on('right', function() {
+            movePlayers(1);
+        });
+        client.on('down', function() {
+            movePlayers(2);
+        });
+        client.on('left', function() {
+            movePlayers(3);
+        });
+
+        client.on('disconnect', function() {
+            clients.splice(arrayIndex, 1);
+            players.splice(arrayIndex, 1);
+        });
+    });
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, false);
+    setInterval(draw, 1000/60);
+
+    function resizeCanvas() {
+        var w = window.innerWidth,
+            h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+        ctx.translate(w/2, h/2);
+        ctx.strokeStyle = 'red';
+        ctx.fillStyle = 'black';
+        draw();
+    }
+ 
+    function randomColor() {
+        var characters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += characters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+    
+    // On socket.io connection
+    function initializePlayer() {
+        var mColor = randomColor();
+        players.push({
+            size: Math.random() * 28 + 15,
+            x: Math.random() * 2000 - 1000,
+            y: Math.random() * 2000 - 1000,
+            color: mColor
+        });
+    }
+
+    function draw() {
+        ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+        ctx.fillStyle= "rgb(200,0,0)";
+        ctx.fillRect (10,10,55,50);
+
+        ctx.fillStyle = "rgba(0,0,200,0.5)";
+        ctx.fillRect (30, 30, 55, 50);
+
+        ctx.beginPath();
+        ctx.arc(0,0,40,0,2*Math.PI);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.closePath();
+
+        drawPlayers();
+    }
+
+    function drawPlayers() {
+        for (var i=0, numPlayers=players.length; i < numPlayers; i++) {
+            var player = players[i];
+            var size = player.size;
+            ctx.save();
+            ctx.fillStyle = player.color;
+            ctx.fill();
+            ctx.translate(player.x - size, player.y - size);
+            ctx.strokeRect(-size, -size, size*2, size*2);
+            ctx.restore();
+        }
+    }
+
+    function movePlayers(dir, playerIndex) {
+        var player = players[playerIndex];
+        // Up
+        if (dir == 0) {
+            player.y -= 5;
+        }
+        // Right
+        if (dir == 1) {
+            player.x += 5;
+        }
+        // Down
+        if (dir == 2) {
+            player.y += 5;
+        }
+        // Left
+        if (dir == 3) {
+            player.x -= 5;
+        }
+    }
+
+
+    /*
+    $(document).ready(function() {
+
         socket.on('up', function() {
-            $('#displaywindow').append($('<li>').text("up pressed"));
-            console.log("up emitted from server");
+            $('body').append($('<li>').text("up pressed"));
+            movePlayers(0);
         });
         socket.on('right', function() {
-            $('#displaywindow').append($('<li>').text("right pressed"));
+            $('body').append($('<li>').text("right pressed"));
+            movePlayers(1);
         });
         socket.on('down', function() {
-            $('#displaywindow').append($('<li>').text("down pressed"));
+            $('body').append($('<li>').text("down pressed"));
+            movePlayers(2);
         });
         socket.on('left', function() {
-            $('#displaywindow').append($('<li>').text("left pressed"));
+            $('body').append($('<li>').text("left pressed"));
+            movePlayers(3);
         });
-    /*
-        // Drawing canvas
-        function draw() {
-          var canvas = document.getElementById('viewport');
-          if (canvas.getContext) {
-            var ctx = canvas.getContext('2d');
 
-            ctx.fillStyle= "rgb(200,0,0)";
-            ctx.fillRect (10,10,55,50);
-
-            ctx.fillStyle = "rgba(0,0,200,0.5)";
-            ctx.fillRect (30, 30, 55, 50);
-          }
-        }
-    */
     });
+    */
   </script>
 
-  <link rel="stylesheet" href="/stylesheets/viewport.css" />
-  </head>
-<body>
-    <div id="displaywindow">
-    <!--    <body onload="draw();">
-          <canvas id="viewport" width="500" height="300"></canvas>
-        </body>
-        <button id="test">test</button>
-    -->
-        <div class="box" id="circle1">
-            <div class="circle"></div>
-        </div>
-    </div>
 </body>
 </html>

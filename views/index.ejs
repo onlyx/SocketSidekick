@@ -55,13 +55,13 @@
             movePlayers(0, arrayIndex);
         });
         client.on('right', function() {
-            movePlayers(1);
+            movePlayers(1, arrayIndex);
         });
         client.on('down', function() {
-            movePlayers(2);
+            movePlayers(2, arrayIndex);
         });
         client.on('left', function() {
-            movePlayers(3);
+            movePlayers(3, arrayIndex);
         });
 
         client.on('disconnect', function() {
@@ -152,7 +152,19 @@
         }
     }
 
+    // testing moving an object on canvas
+    $(document).keydown(function(e) {
+        if (e.keyCode == 37)
+            movePlayers(3, 0);
+        if (e.keyCode == 38)
+            movePlayers(0, 0);
+        if (e.keyCode == 39)
+            movePlayers(1, 0);
+        if (e.keyCode == 40)
+            movePlayers(2, 0);
+    });
 
+    /*
     $(document).ready(function() {
 
         socket.on('up', function() {
@@ -173,6 +185,7 @@
         });
 
     });
+    */
   </script>
 
 </body>

@@ -80,8 +80,6 @@
         canvas.width = w;
         canvas.height = h;
         ctx.translate(w/2, h/2);
-        ctx.strokeStyle = 'red';
-        ctx.fillStyle = 'black';
         draw();
     }
  
@@ -97,27 +95,24 @@
     // On socket.io connection
     function initializePlayer() {
         var mColor = randomColor();
+        var mSize = Math.random() * 28 + 15;
         players.push({
-            size: Math.random() * 28 + 15,
+            size: mSize,
+            /*
             x: Math.random() * 2000 - 1000,
             y: Math.random() * 2000 - 1000,
+            */
+            x: mSize/2,
+            y: mSize/2,
             color: mColor
         });
     }
 
     function draw() {
+        ctx.save();
+        ctx.setTransform(1,0,0,1,0,0);
         ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-        ctx.fillStyle= "rgb(200,0,0)";
-        ctx.fillRect (10,10,55,50);
-
-        ctx.fillStyle = "rgba(0,0,200,0.5)";
-        ctx.fillRect (30, 30, 55, 50);
-
-        ctx.beginPath();
-        ctx.arc(0,0,40,0,2*Math.PI);
-        ctx.fillStyle = 'red';
-        ctx.fill();
-        ctx.closePath();
+        ctx.restore();
 
         drawPlayers();
     }
@@ -127,10 +122,12 @@
             var player = players[i];
             var size = player.size;
             ctx.save();
+            ctx.translate(player.x - size, player.y - size);
+            ctx.beginPath();
+            ctx.arc(player.x,player.y,size,0,2*Math.PI);
             ctx.fillStyle = player.color;
             ctx.fill();
-            ctx.translate(player.x - size, player.y - size);
-            ctx.strokeRect(-size, -size, size*2, size*2);
+            ctx.closePath();
             ctx.restore();
         }
     }
@@ -156,28 +153,26 @@
     }
 
 
-    /*
     $(document).ready(function() {
 
         socket.on('up', function() {
             $('body').append($('<li>').text("up pressed"));
-            movePlayers(0);
+            movePlayers(0, 0);
         });
         socket.on('right', function() {
             $('body').append($('<li>').text("right pressed"));
-            movePlayers(1);
+            movePlayers(1, 0);
         });
         socket.on('down', function() {
             $('body').append($('<li>').text("down pressed"));
-            movePlayers(2);
+            movePlayers(2, 0);
         });
         socket.on('left', function() {
             $('body').append($('<li>').text("left pressed"));
-            movePlayers(3);
+            movePlayers(3, 0);
         });
 
     });
-    */
   </script>
 
 </body>

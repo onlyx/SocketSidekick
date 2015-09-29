@@ -23,6 +23,11 @@ $(function() {
 
     // Dpad scripts
     var socket = io();
+
+    socket.on('connect', function() {
+        socket.emit('new client');
+    }
+    
     $('#controller_backing').bind('touchstart click', function(e) {
        e.preventDefault();
         return false;
@@ -77,21 +82,6 @@ $(function() {
         clearInterval(timer);
         $(this).css('background', '#e3ece5');
     });
-
-    socket.on('up', function() {
-        $('#verticalPhone').append($('<li>').text("up pressed"));
-    });
-    socket.on('right', function() {
-        $('#verticalPhone').append($('<li>').text("right pressed"));
-    });
-    socket.on('down', function() {
-        $('#verticalPhone').append($('<li>').text("down pressed"));
-    });
-    socket.on('left', function() {
-        $('#verticalPhone').append($('<li>').text("left pressed"));
-    });
-
-
 
     /*
     // target elements with the "draggable" class
@@ -148,7 +138,7 @@ $(function() {
     $(document).ready(function(){
         $("#stick").on("tap",function() {
             $("p").hide();
-        })/*.on("taphold",function() {
+        }).on("taphold",function() {
             $(this).hide();
         });
 
@@ -164,7 +154,7 @@ $(function() {
         inner.style.backgroundColor = red;
         inner.style.marginTop = 50px;// outer.style.width/2 - inner.style.width/2;
     }
-    */
             
+    */
 
 });

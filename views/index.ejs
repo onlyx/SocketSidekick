@@ -4,15 +4,8 @@
 
   <!-- Include meta tag to ensure proper rendering and touch zooming -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <!-- Include jQuery Mobile stylesheets
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  -->
   <!-- Include the jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include the jQuery Mobile library 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>-->
-  <!-- Include the jQuery UI library 
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
   <!-- Include interact.js for touch draggability -->
   <script src="//cdn.jsdelivr.net/interact.js/1.2.5/interact.min.js"></script>
   <!-- Socket.io -->
@@ -22,171 +15,12 @@
 
   <link rel="stylesheet" href="/stylesheets/viewport.css" />
   </head>
+
 <body>
     <canvas id="canvas"></canvas>
-<!--    <body onload="draw();">
-    <div class="box" id="circle1">
-        <div class="circle"></div>
-    </div>
--->
 
-  <script>
-    var socket = io();
-
-    function detectMobile() {
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            document.location.replace("http://socketsidekick.herokuapp.com/controller");
-        }
-    }
-    window.onload = detectMobile;
-
-    // Drawing canvas
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-    var clients = []; // Clients are used to deal with each socket connection
-    var players=[]; // Player objects
-
-    socket.on('connect', function(client) {
-        clients.push(client);
-        initializePlayer();
-        var arrayIndex = clients.indexOf(client);
-
-        client.on('up', function() {
-            movePlayers(0, arrayIndex);
-        });
-        client.on('right', function() {
-            movePlayers(1, arrayIndex);
-        });
-        client.on('down', function() {
-            movePlayers(2, arrayIndex);
-        });
-        client.on('left', function() {
-            movePlayers(3, arrayIndex);
-        });
-
-        client.on('disconnect', function() {
-            clients.splice(arrayIndex, 1);
-            players.splice(arrayIndex, 1);
-        });
-    });
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas, false);
-    setInterval(draw, 1000/60);
-
-    function resizeCanvas() {
-        var w = window.innerWidth,
-            h = window.innerHeight;
-        canvas.width = w;
-        canvas.height = h;
-        ctx.translate(w/2, h/2);
-        draw();
-    }
- 
-    function randomColor() {
-        var characters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += characters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-    
-    // On socket.io connection
-    function initializePlayer() {
-        var mColor = randomColor();
-        var mSize = Math.random() * 28 + 15;
-        players.push({
-            size: mSize,
-            /*
-            x: Math.random() * 2000 - 1000,
-            y: Math.random() * 2000 - 1000,
-            */
-            x: mSize/2,
-            y: mSize/2,
-            color: mColor
-        });
-    }
-
-    function draw() {
-        ctx.save();
-        ctx.setTransform(1,0,0,1,0,0);
-        ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-        ctx.restore();
-
-        drawPlayers();
-    }
-
-    function drawPlayers() {
-        for (var i=0, numPlayers=players.length; i < numPlayers; i++) {
-            var player = players[i];
-            var size = player.size;
-            ctx.save();
-            ctx.translate(player.x - size, player.y - size);
-            ctx.beginPath();
-            ctx.arc(player.x,player.y,size,0,2*Math.PI);
-            ctx.fillStyle = player.color;
-            ctx.fill();
-            ctx.closePath();
-            ctx.restore();
-        }
-    }
-
-    function movePlayers(dir, playerIndex) {
-        var player = players[playerIndex];
-        // Up
-        if (dir == 0) {
-            player.y -= 5;
-        }
-        // Right
-        if (dir == 1) {
-            player.x += 5;
-        }
-        // Down
-        if (dir == 2) {
-            player.y += 5;
-        }
-        // Left
-        if (dir == 3) {
-            player.x -= 5;
-        }
-    }
-
-    // testing moving an object on canvas
-    $(document).keydown(function(e) {
-        if (e.keyCode == 37)
-            movePlayers(3, 0);
-        if (e.keyCode == 38)
-            movePlayers(0, 0);
-        if (e.keyCode == 39)
-            movePlayers(1, 0);
-        if (e.keyCode == 40)
-            movePlayers(2, 0);
-    });
-
-    /*
-    $(document).ready(function() {
-
-        socket.on('up', function() {
-            $('body').append($('<li>').text("up pressed"));
-            movePlayers(0, 0);
-        });
-        socket.on('right', function() {
-            $('body').append($('<li>').text("right pressed"));
-            movePlayers(1, 0);
-        });
-        socket.on('down', function() {
-            $('body').append($('<li>').text("down pressed"));
-            movePlayers(2, 0);
-        });
-        socket.on('left', function() {
-            $('body').append($('<li>').text("left pressed"));
-            movePlayers(3, 0);
-        });
-
-    });
-    */
-  </script>
+  <!-- Common View Scripts -->
+  <script src="/javascripts/display.js"></script>
 
 </body>
 </html>

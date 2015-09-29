@@ -42,23 +42,34 @@ app.get('/', function(request, response) {
   response.render('views/index');
 });
 
+// var clients=[];
+
 // Socket.io code
 io.on('connection', function(socket) {
+    var sid = socket.id;
+    //clients.push(sid);
+    io.emit('new client', { id : sid });
+
     socket.on('up', function() {
         console.log('up');
-        io.emit('up');
+        io.emit('up', sid);
     });
     socket.on('right', function() {
         console.log('right');
-        io.emit('right');
+        io.emit('right', sid);
     });
     socket.on('down', function() {
         console.log('down');
-        io.emit('down');
+        io.emit('down', sid);
     });
     socket.on('left', function() {
         console.log('left');
-        io.emit('left');
+        io.emit('left', sid);
+    });
+
+    socket.on('disconnect', function() {
+        console.log('user disconnected');
+        io.emit('user disconnected', sid);
     });
 });
 

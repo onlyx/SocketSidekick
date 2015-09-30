@@ -28,34 +28,40 @@ $(function() {
     var playerNum = 0; 
     socket.on('new client', function(data) {
         clients.push({ id: data.id, index: playerNum });
+        console.log("data.id: " + data.id + "     playerNum: " + playerNum);
         initializePlayer();
         playerNum++;
     });
     
     socket.on('up', function(data) {
         var cIndex = getIndex(clients, 'id', data);
-        var pIndex = clients[cIndex][index];
+        var pIndex = clients[cIndex].index;
+        console.log("attemping to move player: " + pIndex);
         movePlayers(0, pIndex);
     });
     socket.on('right', function(data) {
         var cIndex = getIndex(clients, 'id', data);
-        var pIndex = clients[cIndex][index];
+        var pIndex = clients[cIndex].index;
+        console.log("attemping to move player: " + pIndex);
         movePlayers(1, pIndex);
     });
     socket.on('down', function(data) {
         var cIndex = getIndex(clients, 'id', data);
-        var pIndex = clients[cIndex][index];
+        var pIndex = clients[cIndex].index;
+        console.log("attemping to move player: " + pIndex);
         movePlayers(2, pIndex);
     });
     socket.on('left', function(data) {
         var cIndex = getIndex(clients, 'id', data);
-        var pIndex = clients[cIndex][index];
+        var pIndex = clients[cIndex].index;
+        console.log("attemping to move player: " + pIndex);
         movePlayers(3, pIndex);
     });
     
     socket.on('user disconnected', function(data) {
         var cIndex = getIndex(clients, 'id', data);
-        players.splice(clients[cIndex][index], 1);
+        console.log("disconnecting");
+        players.splice(clients[cIndex].index, 1);
         clients.splice(cIndex, 1);
     });
 
@@ -144,14 +150,26 @@ $(function() {
 
     // testing moving an object on canvas
     $(document).keydown(function(e) {
-        if (e.keyCode == 37)
-            movePlayers(3, 0);
-        if (e.keyCode == 38)
-            movePlayers(0, 0);
-        if (e.keyCode == 39)
-            movePlayers(1, 0);
-        if (e.keyCode == 40)
-            movePlayers(2, 0);
+        if (e.keyCode == 37) {
+            for (var i = 0; i < players.length; i++) {
+                movePlayers(3, i);
+            }
+        }
+        if (e.keyCode == 38) {
+            for (var i = 0; i < players.length; i++) {
+                movePlayers(0, i);
+            }
+        }
+        if (e.keyCode == 39) {
+            for (var i = 0; i < players.length; i++) {
+                movePlayers(1, i);
+            }
+        }
+        if (e.keyCode == 40) {
+            for (var i = 0; i < players.length; i++) {
+                movePlayers(2, i);
+            }
+        }
         if (e.keyCode == 32)
             console.log(clients.length);
     });

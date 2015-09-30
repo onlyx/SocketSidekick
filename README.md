@@ -7,7 +7,7 @@ controller, while a computer screen displays a common place for everyone to inte
 - Node.js/Socket.io
 
 ## Deployment
-SocketSidekick is currently deployed to Heroku and can be found at: socketsidekick.herokuapp.com
+SocketSidekick is currently deployed to Heroku and can be found at: [SocketSidekick](socketsidekick.herokuapp.com)
 
 ### Inspiration
 Inspired by the Multeor web app and Super Sync Sports, a chrome experiment.

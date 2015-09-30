@@ -26,7 +26,7 @@ $(function() {
 
     socket.on('connect', function() {
         socket.emit('new client');
-    }
+    });
     
     $('#controller_backing').bind('touchstart click', function(e) {
        e.preventDefault();

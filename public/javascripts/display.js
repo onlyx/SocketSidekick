@@ -151,24 +151,16 @@ $(function() {
     // testing moving an object on canvas
     $(document).keydown(function(e) {
         if (e.keyCode == 37) {
-            for (var i = 0; i < players.length; i++) {
-                movePlayers(3, i);
-            }
+            movePlayers(3, 0);
         }
         if (e.keyCode == 38) {
-            for (var i = 0; i < players.length; i++) {
-                movePlayers(0, i);
-            }
+            movePlayers(0, 0);
         }
         if (e.keyCode == 39) {
-            for (var i = 0; i < players.length; i++) {
-                movePlayers(1, i);
-            }
+            movePlayers(1, 0);
         }
         if (e.keyCode == 40) {
-            for (var i = 0; i < players.length; i++) {
-                movePlayers(2, i);
-            }
+            movePlayers(2, 0);
         }
         if (e.keyCode == 32)
             console.log(clients.length);

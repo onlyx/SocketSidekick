@@ -1,4 +1,8 @@
 # SocketSidekick
+SocketSidekick aims to explore a novel way of interacting with web applications. It is not uncommon for us to be texting, while also wanting to have fun playing games on our laptops. There is also the divide between console and PC gamers...
+
+Why not combine the two and have the console experience while also using your computer?
+
 Using socket.io's websocket capabilities to implement a mobile controller for a web app. The mobile devices act as the controller, while a common computer screen displays a common place for everyone to interact.
 
 ## Deployment

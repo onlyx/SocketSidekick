@@ -14,6 +14,10 @@ SocketSidekick is currently deployed to Heroku and can be found at:
     Step 1: Click the link above to open the common screen.
     Step 2: Go to the same location (socketsidekick.herokuapp.com) on your mobile device.
     Step 3: Enjoy.
+    
+### Controls
+    Mobile: Use the dpad in landscape mode.
+    PC: Use arrow keys to move around.
 
 ## Technologies
 - HTML Canvas
